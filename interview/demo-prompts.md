@@ -7,7 +7,7 @@ I would like to revise the below appscript to work with the form at https://docs
 function onFormSubmit(e){
 
   var reviewtext = e.namedValues["Describe your Experience"];
-  var apiKey = "AIzaSyDErSOAdUP6M8GEfOBEIqhQNaBSTjSDoaI";
+  var apiKey = "";
   var apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
   var url = apiUrl +"?key="+apiKey;
 
