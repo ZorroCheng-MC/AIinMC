@@ -1,12 +1,14 @@
-
 // === createForm.gs ===
 function createFormInFolder(sheetId) {
   try {
+    // Get configuration from project settings
+    const config = getConfig();
+    
     // Get target folder
-    const targetFolder = DriveApp.getFolderById(CONFIG.TARGET_FOLDER_ID);
+    const targetFolder = DriveApp.getFolderById(config.TARGET_FOLDER_ID);
     
     // Create form directly in target folder
-    const form = FormApp.create(CONFIG.FORM_TITLE);
+    const form = FormApp.create(config.FORM_TITLE);
     const formId = form.getId();
     const formFile = DriveApp.getFileById(formId);
     

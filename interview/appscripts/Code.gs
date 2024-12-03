@@ -1,6 +1,9 @@
 // === code.gs ===
 function main() {
   try {
+    // Validate that all required configuration exists in project settings
+    validateConfig();
+    
     // Step 1: Get questions
     questionsData = findQuestions();
     if (!questionsData) {
@@ -35,9 +38,6 @@ function main() {
     const prefilledUrl = generatePrefilledLink(formUrl, entryIds, answersData.answers);
     Logger.log('Generated prefilled form URL:');
     Logger.log(prefilledUrl);
-
-    // Step 6: Open the prefilled URL in a new tab
-    openGeneratedUrl(prefilledUrl);
 
     return {
       sheetId: sheetId,
