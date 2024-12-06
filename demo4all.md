@@ -15,7 +15,7 @@ Interview bot is an Interview question form generator. It will generate a Google
   <!-- ### [User Instruction](https://docs.google.com/presentation/d/e/2PACX-1vSFzukZJKDFZJtL3nQfXRlqjcSz_VaPacDHc4E7P9Wn29JuRQQmBFqsWxZWsHAlyrPtv64gP_kSc6Dl/pub?start=false&loop=false&delayms=3000) -->
 
 
-## 3. [Auto Load Test for Web App](http://192.168.12.120:3000) (Internal Network only)
+## 3. [Auto Load Test for Web App](http://192.168.12.130:3000) (Internal Network only)
 To test the model quality and performance automatically with different citeria. 
 <!-- 1. Package the code with [Repomix](https://github.com/yamadashy/repomix) 
 1. Use Claude.ai or VScode to develop the api testing document with the packaged code
