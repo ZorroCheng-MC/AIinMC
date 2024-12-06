@@ -16,10 +16,11 @@ Interview bot is an Interview question form generator. It will generate a Google
 
 
 ## 3. [Auto Load Test for Web App](http://192.168.12.120:3000) (Internal Network only)
-1. Package the code with [Repomix](https://github.com/yamadashy/repomix) 
+To test the model quality and performance automatically with different citeria. 
+<!-- 1. Package the code with [Repomix](https://github.com/yamadashy/repomix) 
 1. Use Claude.ai or VScode to develop the api testing document with the packaged code
 1. Use Claude.ai or VScode to develop the test app. (Example: [AI model testers](https://localhost:3000)) with the api testing doc
-3. Create monitoring and upload the code to [GCP Sythetics Monitoring](https://console.cloud.google.com/monitoring/synthetic-monitoring?referrer=search&inv=1&invt=AbirKw&project=plated-analyzer-226005o) for loading testing (USD1.2/1000 executions) 
+3. Create monitoring and upload the code to [GCP Sythetics Monitoring](https://console.cloud.google.com/monitoring/synthetic-monitoring?referrer=search&inv=1&invt=AbirKw&project=plated-analyzer-226005o) for loading testing (USD1.2/1000 executions)  -->
 
 
 ## 4. [App Script mass data processing](https://gamma.app/docs/hdlw6q95klswc5v#card-5bzxrjktq25ldnw)
