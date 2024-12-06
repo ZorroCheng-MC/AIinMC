@@ -31,7 +31,7 @@ To test the model quality and performance automatically with different citeria.
 ## 5. [Elisa](elisa.web.app)
 Elisa is AI Image to list maker. Can automate batch importing images and create google sheet repetitively. Use case: expense report, name cards, homework, medicine reports etc...
 
-## 6. [AudioMinuteBot](http://1912.168.12.130:7860) (Internal Network only)
+## 6. [AudioMinuteBot](http://192.168.12.130:7860) (Internal Network only)
 Zoom or Google Meet integrated minute creator. Support Cantonese, Mandarin and English with speaker label and minute createion.
 
 ## 7. [Thebox](https://thebox.hkmci.net)
