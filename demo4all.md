@@ -11,8 +11,8 @@ Interview bot is an Interview question form generator. It will generate a Google
   <!-- @import "./interview/procedure.md" -->
   <!-- @import "./interview/procedure-v2.md" -->
 
-*Please click the below link to open the user instruction.*
-  ### [User Instruction](https://docs.google.com/presentation/d/e/2PACX-1vSFzukZJKDFZJtL3nQfXRlqjcSz_VaPacDHc4E7P9Wn29JuRQQmBFqsWxZWsHAlyrPtv64gP_kSc6Dl/pub?start=false&loop=false&delayms=3000)
+<!-- *Please click the below link to open the user instruction.* -->
+  <!-- ### [User Instruction](https://docs.google.com/presentation/d/e/2PACX-1vSFzukZJKDFZJtL3nQfXRlqjcSz_VaPacDHc4E7P9Wn29JuRQQmBFqsWxZWsHAlyrPtv64gP_kSc6Dl/pub?start=false&loop=false&delayms=3000) -->
 
 
 ## 3. [Auto Load Test for Web App](http://192.168.12.120:3000) (Internal Network only)
@@ -34,5 +34,4 @@ Elisa is AI Image to list maker. Can automate batch importing images and create 
 Zoom or Google Meet integrated minute creator. Support Cantonese, Mandarin and English with speaker label and minute createion.
 
 ## 7. [Thebox](https://thebox.hkmci.net)
-On premise OpenAI like chatbot. Support all commercial and open source LLM models. With built-in LLM. 
-
+On premise OpenAI like chatbot. Support all commercial and open source LLM models. With built-in RAG. 
