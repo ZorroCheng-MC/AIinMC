@@ -1,9 +1,5 @@
-// === code.gs ===
 function main() {
   try {
-    // Validate that all required configuration exists in project settings
-    validateConfig();
-    
     // Step 1: Get questions
     questionsData = findQuestions();
     if (!questionsData) {
@@ -14,35 +10,33 @@ function main() {
     const sheetId = createSheetInFolder();
     Logger.log(`Created sheet ID: ${sheetId}`);
 
-    const formId = createFormInFolder(sheetId);
-    Logger.log(`Created form ID: ${formId}`);
-
+    // Create and get form
+    const formResult = createFormInFolder(sheetId);
+    const formId = formResult.formId;
+    const form = FormApp.openById(formId);
+    
     makeFormPublic(formId);
+    
+    // Get correct edit URL
+    const formEditUrl = "https://docs.google.com/forms/d/" + formId + "/edit";
 
     // Step 3: Get answers
     answersData = suggestAnswers(questionsData);
-    Logger.log('\nQuestions and Answers:');
-    answersData.questions.forEach((question, index) => {
-      Logger.log(`\nQ${index + 1}: ${question}`);
-      Logger.log(`A${index + 1}: ${answersData.answers[index]}`);
-    });
 
     // Step 4: Get form entry IDs and form URL
-    const form = FormApp.openById(formId);
     const formUrl = form.getPublishedUrl();
     const entryIds = findEntryIds(formId);
-    Logger.log('Found Entry IDs:');
-    Logger.log(entryIds);
-
+    
     // Step 5: Generate prefilled form link
     const prefilledUrl = generatePrefilledLink(formUrl, entryIds, answersData.answers);
-    Logger.log('Generated prefilled form URL:');
-    Logger.log(prefilledUrl);
 
     return {
       sheetId: sheetId,
       formId: formId,
-      prefilledUrl: prefilledUrl
+      formEditUrl: formEditUrl,      // 返回正确格式的编辑器 URL
+      formUrl: formUrl,              // 发布的表单 URL
+      prefilledUrl: prefilledUrl,
+      sheetUrl: DriveApp.getFileById(sheetId).getUrl()
     };
 
   } catch (error) {

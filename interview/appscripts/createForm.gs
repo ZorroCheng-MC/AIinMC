@@ -1,14 +1,10 @@
-// === createForm.gs ===
 function createFormInFolder(sheetId) {
   try {
-    // Get configuration from project settings
-    const config = getConfig();
-    
     // Get target folder
-    const targetFolder = DriveApp.getFolderById(config.TARGET_FOLDER_ID);
+    const targetFolder = DriveApp.getFolderById(CONFIG.TARGET_FOLDER_ID);
     
     // Create form directly in target folder
-    const form = FormApp.create(config.FORM_TITLE);
+    const form = FormApp.create(CONFIG.FORM_TITLE);
     const formId = form.getId();
     const formFile = DriveApp.getFileById(formId);
     
@@ -30,7 +26,14 @@ function createFormInFolder(sheetId) {
     form.setDestination(FormApp.DestinationType.SPREADSHEET, sheetId);
     Logger.log(`Form linked to spreadsheet: ${sheetId}`);
 
-    return formId;
+    // Get the correct form edit URL
+    const formEditUrl = form.getEditUrl(); // 使用 getEditUrl() 方法获取正确的编辑器 URL
+    Logger.log(`Form edit URL: ${formEditUrl}`);
+    
+    return {
+      formId: formId,
+      formEditUrl: formEditUrl
+    };
   } catch (error) {
     Logger.log(`Error in createFormInFolder: ${error.message}`);
     throw error;

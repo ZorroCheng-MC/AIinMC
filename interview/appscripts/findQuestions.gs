@@ -1,8 +1,7 @@
 // === findQuestions.gs ===
 function findQuestions() {
   try {
-    const config = getConfig(); // Get configuration from project settings
-    const questionsDoc = DocumentApp.openById(config.QUESTIONS_DOC_ID);
+    const questionsDoc = DocumentApp.openById(CONFIG.QUESTIONS_DOC_ID);
     const questions = questionsDoc.getBody().getText().split('\n')
                      .filter(q => q.trim())  // Remove empty lines
                      .map(q => q.trim());    // Clean up whitespace

@@ -24,8 +24,6 @@ Once document is approved, you'll see two links:
 - Review the prefilled questions
 - Scroll to bottom and submit a test entry
 
----
-
 ### 5. Complete Google Sheet one time setup
 
 - Open the provided sheet link

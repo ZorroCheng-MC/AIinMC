@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Doc Form Generator</title>
+    <style>
+        .input-url {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+        }
+
+        .generate-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .guide-text {
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0;
+        }    
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        .loading-spinner {
+            display: none;
+            color: #666;
+        }
+        .error {
+            color: red;
+            display: none;
+            margin: 10px 0;
+        }
+        .result {
+            display: none;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .step.completed {
+            background-color: #f8f9fa;
+            opacity: 0.8;
+        }
+        .step.completed .action-button {
+            display: none !important;
+        }
+        .step.completed .step-header::before {
+            content: "✓ ";
+            color: #34a853;
+        }
+        .step.active {
+            display: block;
+            border: 2px solid #4285f4;
+        }
+        .step.visible {
+            display: block;
+        }
+        .step-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .link-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .link-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .link-title {
+            font-weight: bold;
+        }
+        .input-url {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .action-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .action-button:hover {
+            background-color: #357abd;
+        }
+        .action-button.open-button {
+            background-color: #4285f4;
+        }
+        .action-button.confirm-button {
+            background-color: #34a853;
+            display: none;
+        }
+        .guide-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .generate-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .generate-button:hover {
+            background-color: #357abd;
+        }
+        .completion-message {
+            text-align: center;
+            padding: 20px;
+            background-color: #e6f4ea;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        .completion-message h2 {
+            color: #34a853;
+            margin-bottom: 10px;
+        }
+        .form-url-container {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .form-url {
+            word-break: break-all;
+            font-family: monospace;
+            color: #1a73e8;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .copy-button {
+            margin-top: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1 style="display: flex; align-items: center; gap: 10px;">
+        <svg width="32" height="32" viewBox="0 0 52 52">
+            <rect fill="none" height="4.8" rx="1.6" width="27.2" x="12.4" y="26"/>
+            <rect fill="none" height="4.8" rx="1.6" width="24" x="12.4" y="35.6"/>
+            <g>
+                <path d="m36.4 14.8h8.48a1.09 1.09 0 0 0 1.12-1.12 1 1 0 0 0 -.32-.8l-10.56-10.56a1 1 0 0 0 -.8-.32 1.09 1.09 0 0 0 -1.12 1.12v8.48a3.21 3.21 0 0 0 3.2 3.2z" fill="currentColor"/>
+                <path d="m44.4 19.6h-11.2a4.81 4.81 0 0 1 -4.8-4.8v-11.2a1.6 1.6 0 0 0 -1.6-1.6h-16a4.81 4.81 0 0 0 -4.8 4.8v38.4a4.81 4.81 0 0 0 4.8 4.8h30.4a4.81 4.81 0 0 0 4.8-4.8v-24a1.6 1.6 0 0 0 -1.6-1.6zm-32-1.6a1.62 1.62 0 0 1 1.6-1.55h6.55a1.56 1.56 0 0 1 1.57 1.55v1.59a1.63 1.63 0 0 1 -1.59 1.58h-6.53a1.55 1.55 0 0 1 -1.58-1.58zm24 20.77a1.6 1.6 0 0 1 -1.6 1.6h-20.8a1.6 1.6 0 0 1 -1.6-1.6v-1.57a1.6 1.6 0 0 1 1.6-1.6h20.8a1.6 1.6 0 0 1 1.6 1.6zm3.2-9.6a1.6 1.6 0 0 1 -1.6 1.63h-24a1.6 1.6 0 0 1 -1.6-1.6v-1.6a1.6 1.6 0 0 1 1.6-1.6h24a1.6 1.6 0 0 1 1.6 1.6z" fill="currentColor"/>
+            </g>
+        </svg>
+        Interview Form Bot
+    </h1>
+
+    <div class="input-section">
+        <div class="step-header">Step 1: Select Question Document</div>
+        <select id="docSelector" class="input-url">
+            <option value="">Select a document...</option>
+        </select>
+        <div class="guide-text">
+            Available documents will be loaded from your project folder.
+        </div>
+        <button id="generateButton" onclick="generateForm()" class="generate-button" disabled>
+            Generate Form
+        </button>
+        <div id="loadingSpinner" class="loading-spinner">Generating...</div>
+    </div>
+
+        <div id="error" class="error"></div>
+
+        <div id="result" class="result">
+            <!-- Step 2: Form Editor -->
+            <div id="step2" class="step">
+                <div class="step-header">Step 2: Review and Confirm Form</div>
+                <div class="link-container">
+                    <div class="link-header">
+                        <span class="link-title">Instructions:</span>
+                        <div>
+                            <button id="formEditorOpen" class="action-button open-button" onclick="handleFormEditorOpen()">Open Form</button>
+                            <button id="formEditorConfirm" class="action-button confirm-button" onclick="confirmStep(2)">Confirm</button>
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        1. Open the form editor to review the questions<br>
+                        2. Make any necessary adjustments<br>
+                        3. Click Confirm when ready
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Response Sheet -->
+            <div id="step3" class="step">
+                <div class="step-header">Step 3: Response Sheet Setup</div>
+                <div class="link-container">
+                    <div class="link-header">
+                        <span class="link-title">Instructions:</span>
+                        <div>
+                            <button id="sheetOpen" class="action-button open-button" onclick="handleSheetOpen()">Open Sheet</button>
+                            <button id="sheetConfirm" class="action-button confirm-button" onclick="confirmStep(3)">Confirm</button>
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        1. Open the response sheet<br>
+                        2. Wait for 30 seconds untill "Form Tools" show on meun.<br>
+                        3. Click "Form Tools" next to "Help" meun on the top <br>
+                        4. Select "Setup Form Trigger"<br>
+                        5. Complete the authorization process<br>
+                        6. Click Confirm after setup is complete
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Prefilled Form -->
+            <div id="step4" class="step">
+                <div class="step-header">Step 4: Test Submission</div>
+                <div class="link-container">
+                    <div class="link-header">
+                        <span class="link-title">Instructions:</span>
+                        <div>
+                            <button id="prefilledFormOpen" class="action-button open-button" onclick="handlePrefilledFormOpen()">Open Form</button>
+                            <button id="prefilledFormConfirm" class="action-button confirm-button" onclick="confirmStep(4)">Confirm</button>
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        1. Open the pre-filled form<br>
+                        2. Review all answers<br>
+                        3. Scroll to bottom and submit the form
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Gmail -->
+            <div id="step5" class="step">
+                <div class="step-header">Step 5: Send Interview Email</div>
+                <div class="link-container">
+                    <div class="link-header">
+                        <span class="link-title">Instructions:</span>
+                        <div>
+                            <button id="gmailOpen" class="action-button open-button" onclick="handleGmailOpen()">Open Gmail</button>
+                            <button id="gmailConfirm" class="action-button confirm-button" onclick="showCompletion()">Confirm</button>
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        1. Open Gmail<br>
+                        2. Create new email for sending the form<br>
+                        3. Click Confirm after sending the email
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Message -->
+            <div id="completionMessage" class="completion-message">
+                <h2>Congratulations!</h2>
+                <p>Your form is ready to distribute</p>
+                <div class="form-url-container">
+                    <p>Form URL:</p>
+                    <div id="formUrl" class="form-url"></div>
+                    <button onclick="copyFormUrl()" class="copy-button">Copy URL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let formData = {};
+
+        function generateForm() {
+            const docUrl = document.getElementById('docUrl').value;
+            if (!docUrl) {
+                showError('Please enter a Google Doc URL');
+                return;
+            }
+
+            document.getElementById('generateButton').style.display = 'none';
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+            
+            const docId = extractDocId(docUrl);
+            if (!docId) {
+                showError('Invalid Google Doc URL');
+                document.getElementById('generateButton').style.display = 'block';
+                return;
+            }
+
+            google.script.run
+                .withSuccessHandler(updateUI)
+                .withFailureHandler(handleError)
+                .processGoogleDoc(docId);
+        }
+
+        function handleError(error) {
+            showError(error);
+            document.getElementById('generateButton').style.display = 'block';
+        }
+
+        function extractDocId(url) {
+            const match = url.match(/\/d\/([-\w]{25,})/);
+            return match ? match[1] : null;
+        }
+
+        function handleFormEditorOpen() {
+            if (formData.formId) {
+                google.script.run
+                    .withSuccessHandler(function(url) {
+                        window.open(url, '_blank');
+                        document.getElementById('formEditorOpen').style.display = 'none';
+                        document.getElementById('formEditorConfirm').style.display = 'inline-block';
+                    })
+                    .withFailureHandler(function(error) {
+                        showError('Could not open form editor: ' + error);
+                    })
+                    .getFormEditorUrl(formData.formId);
+            }
+        }
+
+        function handleSheetOpen() {
+            if (formData.sheetUrl) {
+                window.open(formData.sheetUrl, '_blank');
+                document.getElementById('sheetOpen').style.display = 'none';
+                document.getElementById('sheetConfirm').style.display = 'inline-block';
+            }
+        }
+
+        function handlePrefilledFormOpen() {
+            if (formData.prefilledUrl) {
+                window.open(formData.prefilledUrl, '_blank');
+                document.getElementById('prefilledFormOpen').style.display = 'none';
+                document.getElementById('prefilledFormConfirm').style.display = 'inline-block';
+            }
+        }
+
+        function handleGmailOpen() {
+            window.open('https://mail.google.com', '_blank');
+            document.getElementById('gmailOpen').style.display = 'none';
+            document.getElementById('gmailConfirm').style.display = 'inline-block';
+        }
+
+        function updateUI(result) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            
+            if (result.error) {
+                showError(result.error);
+                document.getElementById('generateButton').style.display = 'block';
+                return;
+            }
+            
+            formData = result;
+            document.getElementById('result').style.display = 'block';
+            const step2 = document.getElementById('step2');
+            step2.classList.add('visible', 'active');
+        }
+
+        function showError(error) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = 'Error: ' + error;
+            errorDiv.style.display = 'block';
+        }
+
+        function confirmStep(stepNum) {
+            // Mark current step as completed
+            const currentStep = document.getElementById(`step${stepNum}`);
+            currentStep.classList.add('completed');
+            currentStep.classList.remove('active');
+            
+            if (stepNum < 5) {
+                // Show and activate next step
+                const nextStep = document.getElementById(`step${stepNum + 1}`);
+                nextStep.classList.add('visible', 'active');
+                
+                // Reset the buttons state for the next step
+                if (nextStep) {
+                    const openButton = nextStep.querySelector('.open-button');
+                    const confirmButton = nextStep.querySelector('.confirm-button');
+                    if (openButton) openButton.style.display = 'inline-block';
+                    if (confirmButton) confirmButton.style.display = 'none';
+                }
+                
+                // Scroll to the next step smoothly
+                nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function showCompletion() {
+            // Mark step 5 as completed
+            const step5 = document.getElementById('step5');
+            step5.classList.add('completed');
+            step5.classList.remove('active');
+            
+            // Get form URL and show completion message
+            google.script.run
+                .withSuccessHandler(function(url) {
+                    document.getElementById('formUrl').textContent = url;
+                    document.getElementById('completionMessage').style.display = 'block';
+                    document.getElementById('completionMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .getPublishedFormUrl(formData.formId);
+        }
+
+        function copyFormUrl() {
+            const formUrl = document.getElementById('formUrl').textContent;
+            navigator.clipboard.writeText(formUrl).then(function() {
+                const copyButton = document.querySelector('.copy-button');
+                const originalText = copyButton.textContent;
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+           // Function to load documents into dropdown
+    function loadDocuments() {
+        google.script.run
+            .withSuccessHandler(populateDropdown)
+            .withFailureHandler(handleLoadError)
+            .getAvailableGoogleDocs();
+    }
+
+    // Function to populate the dropdown with documents
+    function populateDropdown(docs) {
+        const selector = document.getElementById('docSelector');
+        const generateButton = document.getElementById('generateButton');
+        
+        // Clear existing options except the first one
+        while (selector.options.length > 1) {
+            selector.remove(1);
+        }
+        
+        // Add new options
+        docs.forEach(doc => {
+            const option = document.createElement('option');
+            option.value = doc.id;
+            option.text = doc.name;
+            selector.add(option);
+        });
+        
+        // Enable/disable generate button based on selection
+        selector.onchange = function() {
+            generateButton.disabled = !this.value;
+        };
+    }
+
+    // Function to handle loading errors
+    function handleLoadError(error) {
+        showError('Failed to load documents: ' + error);
+    }
+
+    // Update the existing generateForm function
+    function generateForm() {
+        const docId = document.getElementById('docSelector').value;
+        if (!docId) {
+            showError('Please select a document');
+            return;
+        }
+
+        document.getElementById('generateButton').style.display = 'none';
+        document.getElementById('loadingSpinner').style.display = 'block';
+        document.getElementById('error').style.display = 'none';
+
+        google.script.run
+            .withSuccessHandler(updateUI)
+            .withFailureHandler(handleError)
+            .processGoogleDoc(docId);
+    }
+
+    // Load documents when the page loads
+    window.onload = loadDocuments;
+
+    </script>
+</body>
+</html>

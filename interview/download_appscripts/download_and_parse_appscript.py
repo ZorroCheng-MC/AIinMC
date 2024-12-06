@@ -7,7 +7,9 @@ from googleapiclient.discovery import build
 import datetime
 
 SCOPES = ['https://www.googleapis.com/auth/script.projects.readonly']
-SCRIPT_ID = '18n-rIaR1R8p-jW7BM-KEy7OeJ0zSVGlj3xCMuD2HYK79qpyxIsIT7A__'
+# SCRIPT_ID = '18n-rIaR1R8p-jW7BM-KEy7OeJ0zSVGlj3xCMuD2HYK79qpyxIsIT7A__'
+SCRIPT_ID = '1Ve_Abl8mkbedgs3krgpB4mBv6LU_s7qXtBZVtBwOe5zwHpM_QZ1WY0UP'
+# https://script.google.com/home/projects/1Ve_Abl8mkbedgs3krgpB4mBv6LU_s7qXtBZVtBwOe5zwHpM_QZ1WY0UP/edit
 APPSCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'appscripts')
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), f'appscript_codebase_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.md')
 

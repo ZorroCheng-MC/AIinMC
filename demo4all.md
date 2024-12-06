@@ -1,18 +1,32 @@
 # Demo to MC team
 
-## Tenderbot
+## 1. [Tenderbot](https://app.vectorshift.ai/forms/deployed/674d2c90d9283a0490036fd9)
 
 Tender bot is a AI automated tender responding bot. It will provided the technical solution proposal and project candidates based on the tender brief of work.
   <!-- @import "./tender/demo.md" -->
-  @import "./tender/demo-v2.md"
+  <!-- @import "./tender/demo-v2.md" -->
 
-## HR Interview Automation
+## 2. [HR Interview Automation](https://docs.google.com/forms/d/e/1FAIpQLScSFmADuvz0XYJ7l8CJZu7j2fRVOAYjeD4FnEXyrXp3LXt3lg/viewform?usp=pp_url&entry.1518133959=Alex%20Chen&entry.1082921814=%2B852%209123%204567&entry.547158109=alex.chen%40example.com&entry.1308420365=In%20a%20previous%20enterprise%20deal%2C%20I%20faced%20a%20similar%20budget%20constraint%20situation%20with%20a%20client%20who%20needed%20our%20complete%20security%20solution%20despite%20a%2025%25%20budget%20reduction.%20I%20began%20by%20conducting%20a%20detailed%20needs%20analysis%20to%20understand%20their%20critical%20requirements%20and%20pain%20points.%20Then%2C%20I%20developed%20a%20phased%20implementation%20approach%2C%20prioritizing%20essential%20security%20features%20within%20their%20immediate%20budget%20while%20creating%20a%20roadmap%20for%20adding%20advanced%20features%20over%20time.%20I%20also%20demonstrated%20the%20ROI%20through%20detailed%20cost-benefit%20analysis%20and%20case%20studies%20of%20similar%20implementations.%20This%20approach%20allowed%20us%20to%20maintain%20solution%20integrity%20while%20meeting%20their%20budget%20constraints%2C%20ultimately%20securing%20a%20HK%248M%20deal%20with%20a%203-year%20commitment.&entry.1413758072=I%20recently%20managed%20a%20HK%2412M%20cloud%20migration%20project%20where%20stakeholders%20had%20conflicting%20preferences.%20The%20development%20team%20favored%20GCP%2C%20security%20wanted%20Azure%2C%20and%20finance%20pushed%20for%20AWS%20pricing.%20I%20organized%20structured%20workshops%20with%20each%20group%20to%20document%20their%20specific%20requirements%20and%20concerns.%20Using%20this%20input%2C%20I%20created%20a%20comprehensive%20comparison%20matrix%20highlighting%20how%20different%20combinations%20of%20services%20could%20meet%20their%20needs.%20I%20then%20proposed%20a%20hybrid%20solution%20that%20leveraged%20Azure's%20security%20features%20while%20maintaining%20cost%20efficiency%20through%20strategic%20use%20of%20AWS%20services.%20This%20balanced%20approach%20satisfied%20all%20stakeholders%20and%20led%20to%20successful%20project%20approval.&entry.429910746=During%20a%20recent%20HK%247M%20enterprise%20deal%2C%20I%20encountered%20aggressive%20procurement%20tactics%20focused%20solely%20on%20obtaining%20the%20lowest%20price.%20Instead%20of%20engaging%20in%20a%20price%20war%2C%20I%20shifted%20the%20conversation%20to%20total%20cost%20of%20ownership%20and%20risk%20mitigation.%20I%20prepared%20a%20detailed%20value%20analysis%20showing%20how%20our%20solution%20would%20reduce%20operational%20costs%20by%2040%25%20over%20three%20years%20and%20prevent%20potential%20security%20breaches%20that%20could%20cost%20them%20millions.%20By%20quantifying%20the%20long-term%20benefits%20and%20involving%20key%20business%20stakeholders%2C%20we%20successfully%20justified%20the%20investment%20and%20closed%20the%20deal%20at%20our%20target%20price%20point.&entry.1752123624=I%20once%20noticed%20a%20similar%20performance%20drop%20in%20a%20top%20sales%20performer%20who%20typically%20brought%20in%20HK%242M%20quarterly%20but%20had%20missed%20targets%20for%20two%20months.%20I%20scheduled%20a%20private%20meeting%20to%20express%20my%20concerns%20and%20discovered%20they%20were%20dealing%20with%20family%20health%20issues.%20I%20worked%20with%20HR%20to%20arrange%20flexible%20working%20hours%20and%20connected%20them%20with%20our%20employee%20assistance%20program.%20I%20also%20adjusted%20their%20quarterly%20targets%20temporarily%20while%20maintaining%20clear%20performance%20expectations.%20Through%20regular%20check-ins%20and%20support%2C%20they%20returned%20to%20full%20productivity%20within%20two%20months.&entry.60102887=In%20a%20comparable%20situation%2C%20I%20managed%20an%20incident%20where%20a%20financial%20services%20client%20experienced%20a%202-hour%20service%20disruption%20they%20attributed%20to%20our%20solution.%20I%20immediately%20assembled%20a%20crisis%20team%20and%20established%20hourly%20update%20calls%20with%20the%20client's%20stakeholders.%20While%20investigating%2C%20we%20discovered%20the%20root%20cause%20was%20a%20third-party%20integration%20issue.%20I%20presented%20a%20detailed%20incident%20report%2C%20implemented%20new%20monitoring%20protocols%2C%20and%20provided%20a%20service%20credit%20as%20a%20goodwill%20gesture.%20This%20transparent%20approach%20not%20only%20retained%20the%20client%20but%20led%20to%20an%20expanded%20partnership%20worth%20HK%2415M.&entry.1935701596=When%20facing%20a%20similar%20situation%20with%20a%20delayed%20AI%20feature%20affecting%20HK%2418M%20in%20pipeline%20deals%2C%20I%20took%20a%20proactive%20approach.%20I%20personally%20contacted%20each%20affected%20client%2C%20explaining%20the%20situation%20with%20transparency%20and%20presenting%20alternative%20solutions.%20I%20developed%20a%20comprehensive%20transition%20plan%20that%20included%20temporary%20workarounds%20and%20additional%20support%20services%20at%20no%20cost.%20This%20honest%20communication%20strategy%20helped%20retain%2090%25%20of%20the%20affected%20deals%2C%20with%20clients%20appreciating%20our%20integrity%20and%20commitment%20to%20their%20success.)
 Interview bot is an Interview question form generator. It will generate a Google Form with your finalized interview questions and provided required testing. An auotmated assessment report will be generated to the HR manager for any completed interview questons submission. 
   <!-- @import "./interview/procedure.md" -->
-  @import "./interview/procedure-v2.md"
+  <!-- @import "./interview/procedure-v2.md" -->
 
-## 3. Auto Load Test
+*Please click the below link to open the user instruction.*
+  ### [User Instruction](https://docs.google.com/presentation/d/e/2PACX-1vSFzukZJKDFZJtL3nQfXRlqjcSz_VaPacDHc4E7P9Wn29JuRQQmBFqsWxZWsHAlyrPtv64gP_kSc6Dl/pub?start=false&loop=false&delayms=3000)
+
+
+## 3. [Auto Load Test for Web App](http://192.168.12.120:3000) (Internal Network only)
 1. Package the code with [Repomix](https://github.com/yamadashy/repomix) 
 1. Use Claude.ai or VScode to develop the api testing document with the packaged code
 1. Use Claude.ai or VScode to develop the test app. (Example: [AI model testers](https://localhost:3000)) with the api testing doc
 3. Create monitoring and upload the code to [GCP Sythetics Monitoring](https://console.cloud.google.com/monitoring/synthetic-monitoring?referrer=search&inv=1&invt=AbirKw&project=plated-analyzer-226005o) for loading testing (USD1.2/1000 executions) 
+
+
+## 4. [App Script mass data processing](https://script.google.com/home/projects/1ShnFidccYxcKh5t-Aw1-WTbD1yKfeMX5uEA5DOuFxb9iyUx-OpB_PBO9/edit)
+
+## 5. [Elisa](elisa.web.app)
+
+## 6. [AudioMinuteBot](http://1912.168.12.130:7860) (Internal Network only)
+
+## 7. [Thebox](https://thebox.hkmci.net)
+
