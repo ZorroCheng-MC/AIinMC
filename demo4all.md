@@ -22,11 +22,17 @@ Interview bot is an Interview question form generator. It will generate a Google
 3. Create monitoring and upload the code to [GCP Sythetics Monitoring](https://console.cloud.google.com/monitoring/synthetic-monitoring?referrer=search&inv=1&invt=AbirKw&project=plated-analyzer-226005o) for loading testing (USD1.2/1000 executions) 
 
 
-## 4. [App Script mass data processing](https://script.google.com/home/projects/1ShnFidccYxcKh5t-Aw1-WTbD1yKfeMX5uEA5DOuFxb9iyUx-OpB_PBO9/edit)
+## 4. [App Script mass data processing](https://gamma.app/docs/hdlw6q95klswc5v#card-5bzxrjktq25ldnw)
+- Spitting big Google Sheet
+- Create pivot table
+- Merge records to a new sheet
 
 ## 5. [Elisa](elisa.web.app)
+Elisa is AI Image to list maker. Can automate batch importing images and create google sheet repetitively. Use case: expense report, name cards, homework, medicine reports etc...
 
 ## 6. [AudioMinuteBot](http://1912.168.12.130:7860) (Internal Network only)
+Zoom or Google Meet integrated minute creator. Support Cantonese, Mandarin and English with speaker label and minute createion.
 
 ## 7. [Thebox](https://thebox.hkmci.net)
+On premise OpenAI like chatbot. Support all commercial and open source LLM models. With built-in LLM. 
 
